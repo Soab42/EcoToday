@@ -11,11 +11,13 @@ function LocationSwitcher() {
   useEffect(() => {
     const getLocation = async () => {
       const locations = await getLocationLatLonList();
-      console.log(locations);
+
       setLocations(locations);
     };
     getLocation();
   }, []);
+
+  console.log(locations);
   return (
     <>
       <button onClick={() => setShowLocationList(!showLocationList)}>
@@ -33,18 +35,19 @@ function LocationSwitcher() {
             role="list"
             class="divide-y divide-gray-100 [&>*]:py-2 [&>li]:cursor-pointer"
           >
-            {locations.map((info) => {
-              return (
-                <li key={info?.location}>
-                  <Link
-                    onClick={() => setShowLocationList(false)}
-                    href={`/${info?.location}?latitude=${info?.latitude}&longitude=${info?.longitude}`}
-                  >
-                    {info?.location}
-                  </Link>
-                </li>
-              );
-            })}
+            {locations.length > 0 &&
+              locations.map((info) => {
+                return (
+                  <li key={info?.location}>
+                    <Link
+                      onClick={() => setShowLocationList(false)}
+                      href={`/${info?.location}?latitude=${info?.latitude}&longitude=${info?.longitude}`}
+                    >
+                      {info?.location}
+                    </Link>
+                  </li>
+                );
+              })}
           </ul>
         </div>
       )}
