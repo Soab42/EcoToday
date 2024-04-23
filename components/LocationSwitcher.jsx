@@ -11,7 +11,7 @@ function LocationSwitcher() {
   useEffect(() => {
     const getLocation = async () => {
       const locations = await getLocationLatLonList();
-
+      console.log(locations);
       setLocations(locations);
     };
     getLocation();
@@ -35,8 +35,8 @@ function LocationSwitcher() {
             role="list"
             class="divide-y divide-gray-100 [&>*]:py-2 [&>li]:cursor-pointer"
           >
-            {locations.length > 0 &&
-              locations.map((info) => {
+            {locations?.length > 0 &&
+              locations?.map((info) => {
                 return (
                   <li key={info?.location}>
                     <Link
