@@ -2,7 +2,7 @@ import { getLocations } from "./location-utils";
 
 export const GET = async () => {
   // Get location data
-  const locationData = getLocations();
+  const locationData = await getLocations();
 
   // Set headers
   const headers = {
@@ -14,8 +14,9 @@ export const GET = async () => {
   };
 
   // Create and return response
-  return new Response(JSON.stringify(locationData), {
-    status: 200,
-    headers,
-  });
+  return Response.json(locationData);
+  // return new Response(JSON.stringify(locationData), {
+  //   status: 200,
+  //   headers,
+  // });
 };
