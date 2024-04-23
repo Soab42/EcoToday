@@ -4,19 +4,15 @@ export const GET = async () => {
   // Get location data
   const locationData = await getLocations();
 
-  // Set headers
-  const headers = {
-    "Access-Control-Allow-Origin": "https://eco-today-nojn.vercel.app",
-    "Access-Control-Allow-Methods": "GET, OPTIONS", // Add any other methods you need
-    "Access-Control-Allow-Headers":
-      "Origin, X-Requested-With, Content-Type, Accept",
-    "Content-Type": "application/json", // Set content type
-  };
+  // Create response
+  const response = new Response(JSON.stringify(locationData), {
+    headers: {
+      "Access-Control-Allow-Origin": "https://eco-today-nojn.vercel.app", // Replace this with the appropriate origin
+      "Access-Control-Allow-Methods": "GET", // Specify the allowed HTTP methods
+      "Access-Control-Allow-Headers": "Content-Type", // Specify the allowed headers
+      "Content-Type": "application/json", // Set content type of response
+    },
+  });
 
-  // Create and return response
-  return Response.json(locationData);
-  // return new Response(JSON.stringify(locationData), {
-  //   status: 200,
-  //   headers,
-  // });
+  return response;
 };
