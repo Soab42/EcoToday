@@ -2,7 +2,7 @@
 import { getLocationLatLonList } from "@/lib/location-info";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function LocationSwitcher() {
   const [showLocationList, setShowLocationList] = useState(false);
@@ -11,6 +11,7 @@ function LocationSwitcher() {
   useEffect(() => {
     const getLocation = async () => {
       const locations = await getLocationLatLonList();
+      console.log(locations);
       setLocations(locations);
     };
     getLocation();
