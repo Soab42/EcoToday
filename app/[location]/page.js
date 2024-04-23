@@ -8,7 +8,7 @@ async function LocationPage({
   searchParams: { longitude, latitude },
 }) {
   const resolved = await getResolvedLatLon(location, latitude, longitude);
-
+  console.log(resolved);
   if (resolved?.lat && resolved?.lon) {
     return <LocationInfo lat={resolved?.lat} lon={resolved?.lon} />;
   } else {
