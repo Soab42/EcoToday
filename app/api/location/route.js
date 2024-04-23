@@ -2,7 +2,7 @@ import { getLocations } from "./location-utils";
 
 export const GET = async () => {
   // Get location data
-  const locationData = await getLocations();
+  const locationData = getLocations();
 
   // Create response
   const response = new Response(JSON.stringify(locationData), {
